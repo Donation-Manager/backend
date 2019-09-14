@@ -1,6 +1,6 @@
 import app from "./App";
 import { MongoDBConnection } from "./database/MongoDBConnection";
-const PORT = 3000;
+const PORT = 4000;
 
 app.removeAllListeners();
 app.listen(PORT, () => {
