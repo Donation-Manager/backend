@@ -4,7 +4,7 @@ import { ModelName } from "./definitions/Model";
 import { assembleModel } from "./definitions/ModelAssembler";
 
 export interface DonationModel extends Document {
-  date: Date
+  date: Date;
   description: string;
 }
 
