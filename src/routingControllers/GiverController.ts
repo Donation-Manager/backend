@@ -18,8 +18,7 @@ export class GiverController extends RoutingController {
     const giver = new Giver({
       name: "Joao da Silva",
       dateOfBirth: new Date(),
-      cpf: "4312333434",
-      donations: []
+      cpf: "4312333434"
     });
 
     const newGiver = await giver.save();
