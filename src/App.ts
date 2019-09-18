@@ -17,7 +17,7 @@ class App {
     this.app.use(Cors());
     // support application/json
     this.app.use(BodyParser.json());
-    //support application/x-www-form-urlencoded post data
+    // support application/x-www-form-urlencoded post data
     this.app.use(BodyParser.urlencoded({ extended: false }));
     this.app.use("/", new MainController().getRouter());
     this.app.use(new DonationController().getRouter());

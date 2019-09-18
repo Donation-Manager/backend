@@ -3,5 +3,7 @@ export enum ModelName {
   DonationIntention = "DonationIntention",
   User = "User",
   Giver = "Giver",
-  Product = "Product"
+  Product = "Product",
+  Address = "Address",
+  UserAddress = "UserAddress"
 }
