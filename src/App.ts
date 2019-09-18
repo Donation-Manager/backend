@@ -4,6 +4,7 @@ import * as Cors from "cors";
 import { MainController } from "./routingControllers/MainController";
 import { DonationController } from "./routingControllers/DonationController";
 import { GiverController } from "./routingControllers/GiverController";
+import { DonationIntentionController } from "./routingControllers/DonationIntentionController";
 
 class App {
   public app: Express.Application;
@@ -22,6 +23,7 @@ class App {
     this.app.use("/", new MainController().getRouter());
     this.app.use(new DonationController().getRouter());
     this.app.use(new GiverController().getRouter());
+    this.app.use(new DonationIntentionController().getRouter());
   }
 }
 export default new App().app;
