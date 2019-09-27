@@ -1,12 +1,8 @@
-
-import { Schema } from "mongoose";
 import { ModelName } from "./definitions/Model";
 import { assembleModel } from "./definitions/ModelAssembler";
-import { UserSchema, UserModel } from "./User";
+import { UserModel, UserSchema } from "./User";
 
-export interface GiverModel extends UserModel {
-
-}
+export interface GiverModel extends UserModel { }
 
 const GiverSchema = UserSchema;
 GiverSchema.add({
