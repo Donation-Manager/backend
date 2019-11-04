@@ -1,13 +1,14 @@
 import * as express from "express";
 import { RoutingController } from "./abstractRoutingController/RoutingController";
-import DonationIntention from "../models/DonationIntention";
+import DonationIntention, { DonationIntentionModel } from "../models/DonationIntention";
 import Giver from "../models/Giver";
+import { DonationIntentionService } from "../services/DonationIntentionService";
 
 export class DonationIntentionController extends RoutingController {
 
   protected assembleRoutes(): void {
     this.router.get("/donationIntentions", this.getAllDonationIntentions);
-    this.router.get("/createDonationIntention", this.createDonationIntention);
+    this.router.post("/createDonationIntention", this.createDonationIntention);
   }
 
   public async getAllDonationIntentions(req: express.Request, res: express.Response): Promise<void> {
@@ -16,16 +17,14 @@ export class DonationIntentionController extends RoutingController {
   }
 
   public async createDonationIntention(req: express.Request, res: express.Response): Promise<void> {
-    const donationIntention = new DonationIntention({
-      collectFromGiver: true,
-      collectDate: new Date(),
-      description: "Test intention",
-      giver: new Giver({
-        name: "Maria"
-      })
+    console.log(req.body);
+
+    const donationIntention = req.body;
+    const giver = new Giver({
+      name: "Maria"
     });
 
-    const newDonationIntention = await donationIntention.save();
+    const newDonationIntention = await new DonationIntentionService().saveDonationIntention(donationIntention, giver);
     res.json(newDonationIntention);
   }
 }
