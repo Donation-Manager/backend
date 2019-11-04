@@ -3,6 +3,7 @@ import { RoutingController } from "./abstractRoutingController/RoutingController
 import DonationIntention, { DonationIntentionModel } from "../models/DonationIntention";
 import Giver from "../models/Giver";
 import { DonationIntentionService } from "../services/DonationIntentionService";
+import { GiverService } from "../services/GiverService";
 
 export class DonationIntentionController extends RoutingController {
 
@@ -12,7 +13,7 @@ export class DonationIntentionController extends RoutingController {
   }
 
   public async getAllDonationIntentions(req: express.Request, res: express.Response): Promise<void> {
-    const donationIntentions = await DonationIntention.find({});
+    const donationIntentions = await DonationIntention.find({}).populate("giver");
     res.json(donationIntentions);
   }
 
@@ -20,11 +21,11 @@ export class DonationIntentionController extends RoutingController {
     console.log(req.body);
 
     const donationIntention = req.body;
-    const giver = new Giver({
-      name: "Maria"
-    });
 
-    const newDonationIntention = await new DonationIntentionService().saveDonationIntention(donationIntention, giver);
+    const newDonationIntention = await new DonationIntentionService().saveDonationIntention(
+      donationIntention,
+      await GiverService.getLoggedGiver()
+    );
     res.json(newDonationIntention);
   }
 }

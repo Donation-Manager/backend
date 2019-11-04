@@ -16,7 +16,12 @@ export const UserSchema = new Schema({
   name: String,
   cpf: String,
   rg: String,
-  email: String,
+  email: {
+    type: String,
+    unique: true,
+    required: true,
+    trim: true
+  },
   dateOfBirth: Date,
   phone: String
 });
