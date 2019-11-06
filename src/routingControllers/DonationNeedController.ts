@@ -2,6 +2,7 @@ import * as express from "express";
 import { RoutingController } from "./abstractRoutingController/RoutingController";
 import DonationNeed from "../models/DonationNeed";
 import { DonationNeedService } from "../services/DonationNeedService";
+import { ManagerService } from "../services/ManagerService";
 
 export class DonationNeedController extends RoutingController {
 
@@ -11,7 +12,7 @@ export class DonationNeedController extends RoutingController {
   }
 
   public async getAllDonationNeeds(req: express.Request, res: express.Response): Promise<void> {
-    const donationNeeds = await DonationNeed.find({}); // .populate("manager");
+    const donationNeeds = await DonationNeed.find({}).populate("manager");
     res.json(donationNeeds);
   }
 
@@ -21,8 +22,8 @@ export class DonationNeedController extends RoutingController {
     const donationNeed = req.body;
 
     const newDonationNeed = await new DonationNeedService().saveDonationNeed(
-      donationNeed
-      // await ManagerService.getLoggedManager()
+      donationNeed,
+      await ManagerService.getLoggedManager()
     );
     res.json(newDonationNeed);
   }

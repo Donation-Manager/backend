@@ -4,10 +4,10 @@ import Giver, { GiverModel } from "../models/Giver";
 export class GiverService {
 
   public static async getLoggedGiver(): Promise<GiverModel> {
-    return this.getGiver();
+    return this.getDummyGiver();
   }
 
-  private static async getGiver(): Promise<GiverModel> {
+  private static async getDummyGiver(): Promise<GiverModel> {
     let giver = await Giver.findOne({ email: "carlosdasilva@gmail.com" });
 
     if (!giver) {

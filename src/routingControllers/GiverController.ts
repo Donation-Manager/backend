@@ -28,11 +28,10 @@ export class GiverController extends RoutingController {
   }
 
   public async createGiver(req: express.Request, res: express.Response): Promise<void> {
-    const giver = new Giver({
-      name: "Joao da Silva",
-      dateOfBirth: new Date(),
-      cpf: "4312333434"
-    });
+    console.log(req.body);
+
+    const giverData = req.body;
+    const giver = new Giver(giverData);
 
     const newGiver = await giver.save();
     res.json(newGiver);

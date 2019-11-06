@@ -7,6 +7,7 @@ import { GiverController } from "./routingControllers/GiverController";
 import { DonationIntentionController } from "./routingControllers/DonationIntentionController";
 import { UserController } from "./routingControllers/UserController";
 import { DonationNeedController } from "./routingControllers/DonationNeedController";
+import { ManagerController } from "./routingControllers/ManagerController";
 
 class App {
   public app: Express.Application;
@@ -28,6 +29,7 @@ class App {
     this.app.use(new UserController().getRouter());
     this.app.use(new DonationIntentionController().getRouter());
     this.app.use(new DonationNeedController().getRouter());
+    this.app.use(new ManagerController().getRouter());
   }
 }
 export default new App().app;
