@@ -12,7 +12,7 @@ export class DonationNeedController extends RoutingController {
   }
 
   public async getAllDonationNeeds(req: express.Request, res: express.Response): Promise<void> {
-    const donationNeeds = await DonationNeed.find({}).populate("manager");
+    const donationNeeds = await DonationNeed.find({}).populate("manager").populate("donationItem");
     res.json(donationNeeds);
   }
 

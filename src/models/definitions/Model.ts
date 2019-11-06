@@ -7,5 +7,6 @@ export enum ModelName {
   Product = "Product",
   Address = "Address",
   UserAddress = "UserAddress",
-  Manager = "Manager"
+  Manager = "Manager",
+  DonationItem = "DonationItem"
 }
