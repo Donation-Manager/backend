@@ -2,10 +2,10 @@ Arguments:
   /usr/bin/node /usr/share/yarn/bin/yarn.js lint
 
 PATH: 
-  /home/matheus/projects/donation-manager/backend/node_modules/.bin:/tmp/yarn--1568607069411-0.14970207475838837:/home/matheus/projects/donation-manager/backend/node_modules/.bin:/home/matheus/.config/yarn/link/node_modules/.bin:/home/matheus/.yarn/bin:/usr/libexec/lib/node_modules/npm/bin/node-gyp-bin:/usr/lib/node_modules/npm/bin/node-gyp-bin:/usr/bin/node_modules/npm/bin/node-gyp-bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+  /home/matheus/projects/donation-manager/backend/node_modules/.bin:/tmp/yarn--1572846827378-0.8860218446624102:/home/matheus/projects/donation-manager/backend/node_modules/.bin:/home/matheus/.config/yarn/link/node_modules/.bin:/home/matheus/.yarn/bin:/usr/libexec/lib/node_modules/npm/bin/node-gyp-bin:/usr/lib/node_modules/npm/bin/node-gyp-bin:/usr/bin/node_modules/npm/bin/node-gyp-bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 
 Yarn version: 
-  1.17.3
+  1.19.0
 
 Node version: 
   10.15.2
@@ -20,10 +20,10 @@ Trace:
       at doWrite (_stream_writable.js:410:12)
       at writeOrBuffer (_stream_writable.js:394:5)
       at SyncWriteStream.Writable.write (_stream_writable.js:294:11)
-      at ConsoleReporter._log (/usr/share/yarn/lib/cli.js:96497:17)
-      at ConsoleReporter.log (/usr/share/yarn/lib/cli.js:96485:10)
-      at ConsoleReporter.command (/usr/share/yarn/lib/cli.js:96514:10)
-      at /usr/share/yarn/lib/cli.js:34148:16
+      at ConsoleReporter._log (/usr/share/yarn/lib/cli.js:96601:17)
+      at ConsoleReporter.log (/usr/share/yarn/lib/cli.js:96589:10)
+      at ConsoleReporter.command (/usr/share/yarn/lib/cli.js:96618:10)
+      at /usr/share/yarn/lib/cli.js:34545:16
       at Generator.next (<anonymous>)
 
 npm manifest: 

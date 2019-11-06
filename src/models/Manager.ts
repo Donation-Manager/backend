@@ -8,7 +8,7 @@ export interface ManagerModel extends UserModel {
 
 const ManagerSchema = UserSchema;
 ManagerSchema.add({
-  name: string
+  name: String
 });
 
 export default assembleModel<ManagerModel>(ModelName.Manager, ManagerSchema);
