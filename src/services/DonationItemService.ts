@@ -15,4 +15,8 @@ export class DonationItemService {
     return await DonationItem.findOne({ "itemName": itemName });
   }
 
+  public async getDonationItemById(id: string): Promise<DonationItemModel | null> {
+    return await DonationItem.findOne({ "_id": id });
+  }
+
 }
