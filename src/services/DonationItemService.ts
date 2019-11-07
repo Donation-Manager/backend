@@ -1,4 +1,3 @@
-import { ManagerModel } from "../models/Manager";
 import DonationItem, { DonationItemModel } from "../models/DonationItem";
 
 export class DonationItemService {
@@ -10,6 +9,10 @@ export class DonationItemService {
     const donationItem = new DonationItem(donationItemModel);
 
     return await donationItem.save();
+  }
+
+  public async getDonationItemByName(itemName: string): Promise<DonationItemModel | null> {
+    return await DonationItem.findOne({ "itemName": itemName });
   }
 
 }
