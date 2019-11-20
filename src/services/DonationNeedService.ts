@@ -17,4 +17,8 @@ export class DonationNeedService {
     return await DonationNeed.findOne({ "_id": id }).populate("donationItem");
   }
 
+  public async deleteDonationNeedById(id: string): Promise<any> {
+    return await DonationNeed.deleteOne({ "_id": id });
+  }
+
 }
