@@ -8,6 +8,7 @@ export class DonationNeedController extends RoutingController {
 
   protected assembleRoutes(): void {
     this.router.get("/donationNeeds", this.getAllDonationNeeds);
+    this.router.get("/donationNeedById", this.getDonationNeedById);
     this.router.post("/createDonationNeed", this.createDonationNeed);
   }
 
@@ -27,4 +28,12 @@ export class DonationNeedController extends RoutingController {
     );
     res.json(newDonationNeed);
   }
+
+  public async getDonationNeedById(req: express.Request, res: express.Response): Promise<void> {
+    const id = req.param("donationNeedId");
+    console.log(`id: ${id}`);
+    const donationNeed = await new DonationNeedService().getDonationNeedById(id);
+    res.json(donationNeed);
+  }
+
 }

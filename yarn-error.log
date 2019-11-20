@@ -2,7 +2,7 @@ Arguments:
   /usr/bin/node /usr/share/yarn/bin/yarn.js lint
 
 PATH: 
-  /home/matheus/projects/donation-manager/backend/node_modules/.bin:/tmp/yarn--1572846827378-0.8860218446624102:/home/matheus/projects/donation-manager/backend/node_modules/.bin:/home/matheus/.config/yarn/link/node_modules/.bin:/home/matheus/.yarn/bin:/usr/libexec/lib/node_modules/npm/bin/node-gyp-bin:/usr/lib/node_modules/npm/bin/node-gyp-bin:/usr/bin/node_modules/npm/bin/node-gyp-bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+  /home/matheus/projects/donation-manager/backend/node_modules/.bin:/tmp/yarn--1573096872435-0.1952051783344233:/home/matheus/projects/donation-manager/backend/node_modules/.bin:/home/matheus/.config/yarn/link/node_modules/.bin:/home/matheus/.yarn/bin:/usr/libexec/lib/node_modules/npm/bin/node-gyp-bin:/usr/lib/node_modules/npm/bin/node-gyp-bin:/usr/bin/node_modules/npm/bin/node-gyp-bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 
 Yarn version: 
   1.19.0

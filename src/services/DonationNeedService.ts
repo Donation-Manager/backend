@@ -1,6 +1,5 @@
 import DonationNeed, { DonationNeedModel } from "../models/DonationNeed";
 import { ManagerModel } from "../models/Manager";
-import { DonationItemService } from "./DonationItemService";
 
 export class DonationNeedService {
 
@@ -11,8 +10,11 @@ export class DonationNeedService {
     donationNeedModel.manager = manager;
 
     const donationNeed = new DonationNeed(donationNeedModel);
+    return await donationNeed.updateOne(donationNeedModel, { upsert : true });
+  }
 
-    return await donationNeed.save();
+  public async getDonationNeedById(id: string): Promise<DonationNeedModel | null> {
+    return await DonationNeed.findOne({ "_id": id }).populate("donationItem");
   }
 
 }
