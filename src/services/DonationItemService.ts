@@ -19,4 +19,8 @@ export class DonationItemService {
     return await DonationItem.findOne({ "_id": id });
   }
 
+  public async deleteAllDonationItems(): Promise<any> {
+    return await DonationItem.deleteMany({ });
+  }
+
 }

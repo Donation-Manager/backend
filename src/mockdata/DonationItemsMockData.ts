@@ -1,52 +1,67 @@
-import { DonationItemModel } from "../models/DonationItem";
+import DonationItem, { DonationItemModel } from "../models/DonationItem";
 import { DonationItemService } from "../services/DonationItemService";
+import { StockItemService } from "../services/StockItemService";
+import { StockItemModel } from "../models/StockItem";
 
 export class DonationItemsMockData {
 
-  private service: DonationItemService;
+  private service: StockItemService;
 
   public async initMockData(): Promise<void> {
-    this.service = new DonationItemService();
-    const donationItems = this.getMockData();
-    donationItems.forEach(async (donationItem) => {
-      console.log(donationItem);
-      console.log(`Encontrou? ${await this.isDonationItemAlreadyCreated(donationItem)}`);
-      if (!await this.isDonationItemAlreadyCreated(donationItem)) {
-        this.service.saveDonationItem(donationItem);
-      }
+    this.service = new StockItemService();
+
+    const stockItems = this.getMockData();
+    this.service.deleteAllStockItems();
+    new DonationItemService().deleteAllDonationItems();
+
+    console.log("MOCKUP STOCK:");
+    stockItems.forEach(async (stockItem) => {
+      console.log(stockItem);
+      this.service.saveStockItem(stockItem, null);
     });
   }
 
-  private async isDonationItemAlreadyCreated(donationItem: Partial<DonationItemModel>): Promise<boolean> {
-    return Boolean(await this.service.getDonationItemByName(donationItem.itemName));
-  }
-
-  private getMockData(): Array<Partial<DonationItemModel>> {
+  private getMockData(): Array<Partial<any>> {
     return [
       {
-        itemName: "Feijão",
-        itemDescription: "",
-        itemUOM: "Kg"
+        itemQuantity: 50,
+        donationItem: {
+          itemName: "Feijão",
+          itemDescription: "Exemplo de descrição",
+          itemUOM: "Kg"
+        }
       },
       {
-        itemName: "Arroz",
-        itemDescription: "",
-        itemUOM: "Kg"
+        itemQuantity: 100,
+        donationItem: {
+          itemName: "Arroz",
+          itemDescription: "Exemplo de descrição",
+          itemUOM: "Kg"
+        }
       },
       {
-        itemName: "Calçados",
-        itemDescription: "",
-        itemUOM: "pares"
+        itemQuantity: 10,
+        donationItem: {
+          itemName: "Calçados",
+          itemDescription: "Exemplo de descrição",
+          itemUOM: "pares"
+        }
       },
       {
-        itemName: "Agasalho",
-        itemDescription: "",
-        itemUOM: "pçs"
+        itemQuantity: 24,
+        donationItem: {
+          itemName: "Agasalho",
+          itemDescription: "Exemplo de descrição",
+          itemUOM: "pçs"
+        }
       },
       {
-        itemName: "Cama",
-        itemDescription: "",
-        itemUOM: "pçs"
+        itemQuantity: 5,
+        donationItem: {
+          itemName: "Cama",
+          itemDescription: "Exemplo de descrição",
+          itemUOM: "pçs"
+        }
       }
     ];
   }

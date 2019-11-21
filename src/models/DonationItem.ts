@@ -10,7 +10,7 @@ export interface DonationItemModel extends Document {
 }
 
 const DonationItemSchema = new Schema({
-  itemName: { type: String, required: true },
+  itemName: { type: String, required: true, unique : true, dropDups: true },
   itemDescription: { type: String },
   itemUOM: { type: String }
 });
