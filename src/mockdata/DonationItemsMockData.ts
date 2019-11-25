@@ -2,23 +2,26 @@ import DonationItem, { DonationItemModel } from "../models/DonationItem";
 import { DonationItemService } from "../services/DonationItemService";
 import { StockItemService } from "../services/StockItemService";
 import { StockItemModel } from "../models/StockItem";
+import DonationIntention, { DonationIntentionModel } from "../models/DonationIntention";
 
 export class DonationItemsMockData {
 
   private service: StockItemService;
 
   public async initMockData(): Promise<void> {
-    this.service = new StockItemService();
-
-    const stockItems = this.getMockData();
-    this.service.deleteAllStockItems();
-    new DonationItemService().deleteAllDonationItems();
-
-    console.log("MOCKUP STOCK:");
-    stockItems.forEach(async (stockItem) => {
-      console.log(stockItem);
-      this.service.saveStockItem(stockItem, null);
-    });
+    // this.service = new StockItemService();
+    //
+    // const stockItems = this.getMockData();
+    // this.service.deleteAllStockItems();
+    // new DonationItemService().deleteAllDonationItems();
+    //
+    // console.log("MOCKUP STOCK:");
+    // stockItems.forEach(async (stockItem) => {
+    //   console.log(stockItem);
+    //   this.service.saveStockItem(stockItem, null);
+    // });
+    console.log("passou aqui");
+    DonationIntention.deleteMany({ });
   }
 
   private getMockData(): Array<Partial<any>> {
