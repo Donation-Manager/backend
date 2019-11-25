@@ -12,6 +12,7 @@ export interface DonationIntentionModel extends Document {
   giver: GiverModel;
   donationNeed: DonationNeedModel;
   quantity: Number;
+  approved: boolean;
 }
 
 const DonationIntentionSchema = new Schema({
@@ -20,7 +21,8 @@ const DonationIntentionSchema = new Schema({
   description: { type: String },
   quantity: { type: Number },
   giver: { type: Schema.Types.ObjectId, ref: ModelName.Giver },
-  donationNeed: { type: Schema.Types.ObjectId, ref: ModelName.DonationNeed }
+  donationNeed: { type: Schema.Types.ObjectId, ref: ModelName.DonationNeed },
+  approved: { type: Boolean }
 });
 
 export default assembleModel<DonationIntentionModel>(ModelName.DonationIntention, DonationIntentionSchema);

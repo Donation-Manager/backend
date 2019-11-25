@@ -16,7 +16,7 @@ export class DonationIntentionController extends RoutingController {
   }
 
   public async getAllDonationIntentions(req: express.Request, res: express.Response): Promise<void> {
-    const donationIntentions = await DonationIntention.find({}).populate("giver").populate("donationNeed");
+    const donationIntentions = await DonationIntention.find({ approved: false }).populate("giver").populate("donationNeed");
     console.log(donationIntentions);
     // await donationIntentions.forEach(async (item) => {
     //   const donationItem = await service.getDonationItemById(item.donationNeed.donationItem._id);
@@ -30,6 +30,7 @@ export class DonationIntentionController extends RoutingController {
     console.log(req.body);
 
     const donationIntention = req.body;
+    donationIntention.approved = false;
 
     const newDonationIntention = await new DonationIntentionService().saveDonationIntention(
       donationIntention,
