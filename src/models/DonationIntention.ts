@@ -11,12 +11,14 @@ export interface DonationIntentionModel extends Document {
   description: string;
   giver: GiverModel;
   donationNeed: DonationNeedModel;
+  quantity: Number;
 }
 
 const DonationIntentionSchema = new Schema({
   collectFromGiver: { type: Boolean },
   collectDate: { type: Date },
   description: { type: String },
+  quantity: { type: Number },
   giver: { type: Schema.Types.ObjectId, ref: ModelName.Giver },
   donationNeed: { type: Schema.Types.ObjectId, ref: ModelName.DonationNeed }
 });
