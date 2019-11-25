@@ -15,11 +15,7 @@ export class DonationController extends RoutingController {
   }
 
   public async createDonation(req: express.Request, res: express.Response): Promise<void> {
-    const donation = new Donation({
-      date: new Date(),
-      description: "My first donation."
-    });
-
+    const donation = new Donation(req.body);
     const newDonation = await donation.save();
     res.json(newDonation);
   }
