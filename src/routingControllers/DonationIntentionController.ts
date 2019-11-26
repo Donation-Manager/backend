@@ -11,13 +11,14 @@ import { GiverService } from "../services/GiverService";
 export class DonationIntentionController extends RoutingController {
 
   protected assembleRoutes(): void {
-    this.router.get("/donationIntentions", this.getAllDonationIntentions);
+    this.router.get("/donationIntentions", this.getPendingDonationIntentions);
     this.router.post("/createDonationIntention", this.createDonationIntention);
     this.router.post("/acceptDonation", this.acceptDonation);
     this.router.get("/allDonationsIntentions", this.all);
+    this.router.get("/approvedDonationsIntentions", this.getApprovedDonationIntentions);
   }
 
-  public async getAllDonationIntentions(req: express.Request, res: express.Response): Promise<void> {
+  public async getPendingDonationIntentions(req: express.Request, res: express.Response): Promise<void> {
     const donationIntentions = await DonationIntention.find({ approved: false }).populate("giver").populate("donationNeed");
     console.log(donationIntentions);
     // await donationIntentions.forEach(async (item) => {
@@ -45,7 +46,6 @@ export class DonationIntentionController extends RoutingController {
     console.log(req.body);
     const intentionId = req.param("intentionId");
     console.log(`id: ${intentionId}`);
-    // DonationIntention.updateOne({ _id: intentionId }, { approved: true });
     const intention = await DonationIntention.findOne({ _id: intentionId });
     intention.approved= true;
     await intention.save();
@@ -54,11 +54,12 @@ export class DonationIntentionController extends RoutingController {
   public async all(req: express.Request, res: express.Response): Promise<void> {
     const donationIntentions = await DonationIntention.find({}).populate("giver").populate("donationNeed");
     console.log(donationIntentions);
-    // await donationIntentions.forEach(async (item) => {
-    //   const donationItem = await service.getDonationItemById(item.donationNeed.donationItem._id);
-    //   console.log(donationItem);
-    //   item.donationNeed.donationItem = donationItem;
-    // });
+    res.json(donationIntentions);
+  }
+
+  public async getApprovedDonationIntentions(req: express.Request, res: express.Response): Promise<void> {
+    const donationIntentions = await DonationIntention.find({ approved: true }).populate("giver").populate("donationNeed");
+    console.log(donationIntentions);
     res.json(donationIntentions);
   }
 }
