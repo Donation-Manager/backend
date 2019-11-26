@@ -13,6 +13,7 @@ export class DonationIntentionController extends RoutingController {
   protected assembleRoutes(): void {
     this.router.get("/donationIntentions", this.getAllDonationIntentions);
     this.router.post("/createDonationIntention", this.createDonationIntention);
+    this.router.post("/acceptDonation", this.acceptDonation);
   }
 
   public async getAllDonationIntentions(req: express.Request, res: express.Response): Promise<void> {
@@ -37,5 +38,15 @@ export class DonationIntentionController extends RoutingController {
       await GiverService.getLoggedGiver()
     );
     res.json(newDonationIntention);
+  }
+
+  public async acceptDonation(req: express.Request, res: express.Response): Promise<void> {
+    console.log(req.body);
+    const intentionId = req.param("intentionId");
+    console.log(`id: ${intentionId}`);
+    // DonationIntention.updateOne({ _id: intentionId }, { approved: true });
+    const intention = await DonationIntention.findOne({ _id: intentionId });
+    intention.approved= true;
+    await intention.save();
   }
 }
