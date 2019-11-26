@@ -14,6 +14,7 @@ export class DonationIntentionController extends RoutingController {
     this.router.get("/donationIntentions", this.getAllDonationIntentions);
     this.router.post("/createDonationIntention", this.createDonationIntention);
     this.router.post("/acceptDonation", this.acceptDonation);
+    this.router.get("/allDonationsIntentions", this.all);
   }
 
   public async getAllDonationIntentions(req: express.Request, res: express.Response): Promise<void> {
@@ -48,5 +49,16 @@ export class DonationIntentionController extends RoutingController {
     const intention = await DonationIntention.findOne({ _id: intentionId });
     intention.approved= true;
     await intention.save();
+  }
+
+  public async all(req: express.Request, res: express.Response): Promise<void> {
+    const donationIntentions = await DonationIntention.find({}).populate("giver").populate("donationNeed");
+    console.log(donationIntentions);
+    // await donationIntentions.forEach(async (item) => {
+    //   const donationItem = await service.getDonationItemById(item.donationNeed.donationItem._id);
+    //   console.log(donationItem);
+    //   item.donationNeed.donationItem = donationItem;
+    // });
+    res.json(donationIntentions);
   }
 }
