@@ -9,12 +9,12 @@ export class DonationItemsMockData {
   private service: StockItemService;
 
   public async initMockData(): Promise<void> {
-    // this.service = new StockItemService();
-    //
+    this.service = new StockItemService();
+
     // const stockItems = this.getMockData();
     // this.service.deleteAllStockItems();
     // new DonationItemService().deleteAllDonationItems();
-    //
+
     // console.log("MOCKUP STOCK:");
     // stockItems.forEach(async (stockItem) => {
     //   console.log(stockItem);
