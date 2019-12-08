@@ -8,6 +8,7 @@ import { DonationNeedModel } from "./DonationNeed";
 export interface DonationIntentionModel extends Document {
   collectFromGiver: boolean;
   collectDate: Date;
+  collectHour: Date;
   description: string;
   giver: GiverModel;
   donationNeed: DonationNeedModel;
@@ -21,6 +22,7 @@ export interface DonationIntentionModel extends Document {
 const DonationIntentionSchema = new Schema({
   collectFromGiver: { type: Boolean },
   collectDate: { type: Date },
+  collectHour: { type: Date },
   description: { type: String },
   quantity: { type: Number },
   street: { type: String },
