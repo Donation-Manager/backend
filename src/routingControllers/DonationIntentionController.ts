@@ -21,7 +21,8 @@ export class DonationIntentionController extends RoutingController {
   }
 
   public async getPendingDonationIntentions(req: express.Request, res: express.Response): Promise<void> {
-    const donationIntentions = await DonationIntention.find({ approved: false }).populate("giver").populate("donationNeed");
+    const donationIntentions = await DonationIntention
+      .find({ approved: false, reproved: false }).populate("giver").populate("donationNeed");
     console.log(donationIntentions);
     // await donationIntentions.forEach(async (item) => {
     //   const donationItem = await service.getDonationItemById(item.donationNeed.donationItem._id);
