@@ -8,7 +8,7 @@ export class DonationIntentionService {
     giverModel: GiverModel
   ): Promise<DonationIntentionModel> {
     donationIntentionModel.giver = giverModel;
-    donationIntentionModel.received = false
+    donationIntentionModel.received = false;
 
     const donationIntention = new DonationIntention(donationIntentionModel);
 
