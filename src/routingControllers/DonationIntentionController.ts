@@ -69,7 +69,11 @@ export class DonationIntentionController extends RoutingController {
     const reprovedReason = req.param("reprovedReason");
     console.log(`reject id: ${intentionId}`);
     console.log(`reproved reason: ${reprovedReason}`);
-    res.json(await DonationIntention.deleteOne({ _id: intentionId }));
+
+    const intention = await DonationIntention.findOne({ _id: intentionId });
+    intention.reproved = true;
+    intention.reprovedReason = reprovedReason;
+    res.json(await intention.save());
   }
 
   public async all(req: express.Request, res: express.Response): Promise<void> {
