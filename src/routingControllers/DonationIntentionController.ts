@@ -36,6 +36,7 @@ export class DonationIntentionController extends RoutingController {
 
     const donationIntention = req.body;
     donationIntention.approved = false;
+    donationIntention.reproved = false;
 
     const newDonationIntention = await new DonationIntentionService().saveDonationIntention(
       donationIntention,
